@@ -98,4 +98,3 @@ Admin only
 ### Review
 
 추가해야 함
-- 서버 로그 조회ㅎㅏㅁ
