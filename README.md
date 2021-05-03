@@ -38,19 +38,31 @@ node.js를 사용하여 개발한 CTF 플랫폼
 Common
 
 - 로그인, 로그아웃, 회원가입
+
 ![signin](/readme_images/Common/0_1.png)
 ![signup](/readme_images/Common/0_2.png)
+
 - 프로필 조회; 자신이 푼 모든 문제를 보여줌
+
 ![profile](/readme_images/Common/6.png)
 - 공지사항 페이지의 게시글 조회
+
 ![notice](/readme_images/Common/1.png)
 - 순위 조회; 회원 등급별로 따로 조회 가능
+
 ![scoreboard](/readme_images/Common/2.png)
 ![scoreboard_spec](/readme_images/Common/3.png)
+
 - 문제 페이지 조회; 문제 분류별로 따로 조회 가능
+
 ![chall](/readme_images/Common/4.png)
 ![chall_spec](/readme_images/Common/5.png)
+
 - 문제 풀이 및 결과 출력; 결과에 따라 다른 결과로 반응
+
+![failed](/readme_images/Common/7.png)
+![success](/readme_images/Common/8.png)
+![already](/readme_images/Common/9.png)
 
 Admin only
 
