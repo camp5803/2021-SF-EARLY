@@ -38,7 +38,7 @@ node.js를 사용하여 개발한 CTF 플랫폼
 Common
 
 - 로그인, 로그아웃, 회원가입
-![0_1](/readme_images/Common/01.png)
+![login](/readme_images/Common/0_1.png)
 
 - 프로필 조회; 자신이 푼 모든 문제를 보여줌
 - 공지사항 페이지의 게시글 조회
