@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SecurityFirst CTF 2021</title>
+    <!---->
+    <link rel="stylesheet" href="<%=route%>css/theme.css">
+    <link rel="stylesheet" href="<%=route%>css/controls.css">
+    <link rel="stylesheet" href="<%=route%>css/common.css">
+    <script src="<%=route%>assets/js/jquery.min.js"></script>
+    <script>
+        $(window).ready(function () {
+            var typingBool = false;
+            var typingIdx = 0;
+            var typingTxt = $(".typing-txt").text();
+            typingTxt = typingTxt.split("");
+            if (typingBool == false) {
+                typingBool = true;
+                var tyInt = setInterval(typing, 100);
+            }
+
+            function typing() {
+                if (typingIdx < typingTxt.length) {
+                    $(".typing").append(typingTxt[typingIdx]);
+                    typingIdx++;
+                } else {
+                    location.replace('<%=link%>')
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="error-msg">
+        <p class="typing-txt">
+            <% if (err == true) { %>
+                <%=msg%>는(은) 임포스터가 아니었습니다.
+            <% } else { %>
+                <%=msg%>는(은) 임포스터였습니다!
+            <% } %>
+        </p>
+        <p class="typing"></p>
+    </div>
+</body>
+
+</html>

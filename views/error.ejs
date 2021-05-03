@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SecurityFirst CTF 2021</title>
+    <!---->
+    <link rel="stylesheet" href="<%=route%>css/theme.css">
+    <link rel="stylesheet" href="<%=route%>css/controls.css">
+    <link rel="stylesheet" href="<%=route%>css/common.css">
+    <script src="<%=route%>assets/js/jquery.min.js"></script>
+    <script>
+        $(window).ready(function () {
+            let typingBool = false;
+            let typingIdx = 0;
+            let typingTxt = $(".typing-txt").text();
+            typingTxt = typingTxt.split("");
+            if (typingBool == false) {
+                typingBool = true;
+                let tyInt = setInterval(typing, 100);
+            }
+
+            function typing() {
+                if (typingIdx < typingTxt.length) {
+                    $(".typing").append(typingTxt[typingIdx]);
+                    typingIdx++;
+                } else {
+                    location.replace('<%=link%>')
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="error-flag">
+        <p class="typing-txt">이미 인증한 플래그입니다!</p>
+        <p class="typing"></p>
+    </div>
+</body>
+
+</html>

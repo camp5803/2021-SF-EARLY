@@ -1,0 +1,202 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SecurityFirst CTF 2021</title>
+        <!---->
+        <link rel="stylesheet" href="<%=route%>/css/theme.css">
+        <link rel="stylesheet" href="<%=route%>/css/controls.css">
+        <link rel="stylesheet" href="<%=route%>/css/common.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-item-title secu-title-s">
+                    <a class="navbar-link-logo" href="/">SECURITYFIRST</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/notice">NOTICE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link navbar-link-active" href="/ranking">SCOREBOARD</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/chall">CHALLENGE</a>
+                </div>
+                <div class="navbar-item navbar-item-profile">
+                    <a class="navbar-link" href="/profile">PROFILE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/logout">LOGOUT</a>
+                </div>
+                <% if (sess.users.mem_type == "Admin") { %>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/kingkingsecu">ADMIN</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="ingame-root">
+            <div class="ingame-content">
+                <div class="scoreboard-main-container">
+                    <div class="scoreboard-main-item">
+                        <div class="scoreboard-main-title">
+                            SCOREBOARD
+                        </div>
+                    </div>
+                    <div class="scoreboard-main-item">
+                        <div class="scoreboard-hof-container">
+                            <div class="scoreboard-hof-item scoreboard-hof-second">
+                                <div class="scoreboard-hof-second-title">
+                                    2
+                                </div>
+                                <div class="scoreboard-hof-second-img">
+                                    <img src="<%=route%>/img/AmongUs-PetWhite.png" />
+                                </div>
+                                <div class="scoreboard-hof-second-type">
+                                    <p><%=data[1].mem_type%></p>
+                                </div>
+                                <div class="scoreboard-hof-second-name">
+                                    <p><%=data[1].nickname%></p>
+                                </div>
+                                <div class="scoreboard-hof-second-score">
+                                    <p><%=data[1].uscore%></p>
+                                </div>
+                            </div>
+                            <div class="scoreboard-hof-item scoreboard-hof-first">
+                                <div class="scoreboard-hof-first-title">
+                                    1
+                                </div>
+                                <div class="scoreboard-hof-first-img">
+                                    <img src="<%=route%>/img/AmongUs-PetWhite.png" />
+                                </div>
+                                <div class="scoreboard-hof-first-type">
+                                    <p><%=data[0].mem_type%></p>
+                                </div>
+                                <div class="scoreboard-hof-first-name">
+                                    <p><%=data[0].nickname%></p>
+                                </div>
+                                <div class="scoreboard-hof-first-score">
+                                    <p><%=data[0].uscore%></p>
+                                </div>
+                            </div>
+                            <div class="scoreboard-hof-item scoreboard-hof-third">
+                                <div class="scoreboard-hof-third-title">
+                                    3
+                                </div>
+                                <div class="scoreboard-hof-third-img">
+                                    <img src="<%=route%>/img/AmongUs-PetWhite.png" />
+                                </div>
+                                <div class="scoreboard-hof-third-type">
+                                    <p><%=data[2].mem_type%></p>
+                                </div>
+                                <div class="scoreboard-hof-third-name">
+                                    <p><%=data[2].nickname%></p>
+                                </div>
+                                <div class="scoreboard-hof-third-score">
+                                    <p><%=data[2].uscore%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scoreboard-main-item">
+                        <div clas="scoreboard-type-container">
+                            <a class="
+                            <% if (type == '') { %>
+                                scoreboard-type-item scoreboard-type-item-active
+                            <% } else { %>
+                                scoreboard-type-item
+                            <% } %>
+                            " href="/ranking" style="text-decoration:none" name="ALL">
+                                ALL
+                            </a>
+                            <a class="
+                            <% if (type == 'NB') { %>
+                                scoreboard-type-item scoreboard-type-item-active
+                            <% } else { %>
+                                scoreboard-type-item
+                            <% } %>
+                            " href="/ranking/NB" style="text-decoration:none" name="NB">
+                                NB
+                            </a>
+                            <a class="
+                            <% if (type == 'YB') { %>
+                                scoreboard-type-item scoreboard-type-item-active
+                            <% } else { %>
+                                scoreboard-type-item
+                            <% } %>
+                            " href="/ranking/YB" style="text-decoration:none" name="YB">
+                                YB
+                            </a>
+                            <a class="
+                            <% if (type == 'OB') { %>
+                                scoreboard-type-item scoreboard-type-item-active
+                            <% } else { %>
+                                scoreboard-type-item
+                            <% } %>
+                            " href="/ranking/OB" style="text-decoration:none" name="OB">
+                                OB
+                            </a>
+                            <a class="
+                            <% if (type == 'ETC') { %>
+                                scoreboard-type-item scoreboard-type-item-active
+                            <% } else { %>
+                                scoreboard-type-item
+                            <% } %>
+                            " href="/ranking/ETC" style="text-decoration:none" name="ETC">
+                                ETC
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="scoreboard-list-container">
+                    <div class="scoreboard-list-item scoreboard-list-item-caption">
+                        <div class="scoreboard-list-item-ranking">
+                            <p>순위</p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-name">
+                            <p>이름</p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-solved">
+                            <p>푼 문제 수</p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-type">
+                            <p>분류</p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-score">
+                            <p>점수</p>
+                        </div>
+                    </div>
+                    <% for(let i=0; i<data.length; i++) { %>
+                    <div class="scoreboard-list-item">
+                        <div class="scoreboard-list-item-ranking">
+                            <p><%=i+1%></p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-name">
+                            <p><%=data[i].nickname%></p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-solved">
+                            <p><%=data[i].solved_num%></p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-type">
+                            <p><%=data[i].mem_type%></p>
+                        </div>
+                        <hr class="scoreboard-list-item-divider-v divider" />
+                        <div class="scoreboard-list-item-score">
+                            <p><%=data[i].uscore%></p>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

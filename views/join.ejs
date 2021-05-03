@@ -1,0 +1,149 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SecurityFirst CTF 2021</title>
+        <!---->
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/controls.css">
+        <link rel="stylesheet" href="css/common.css">
+        <script>
+            const confirmPassword = () => {
+                const pw = document.getElementsByName('passwd');
+                const repw = document.getElementsByName('repasswd');
+                let errMsg = document.getElementsByName('pwvalerr');
+                let errLength = document.getElementsByName('pwlenerr');
+                let submitColor = document.getElementsByName('subbtn');
+
+                if (pw[0].value != repw[0].value) {
+                    errMsg[0].style.display = "inline";
+                } else {
+                    errMsg[0].style.display = "none";
+                }
+
+                if (pw[0].value.length < 8) {
+                    errLength[0].style.display = "inline";
+                } else {
+                    errLength[0].style.display = "none";
+                }
+
+                if (pw[0].value.length < 8 && pw[0].value != repw[0].value) {
+                    errMsg[0].style.display = "none";
+                    errLength[0].style.display = "inline";
+                }
+
+                if (pw[0].value != repw[0].value || pw[0].value.length < 8) {
+                    submitColor[0].style.color = "black";
+                    submitColor[0].disabled = true;
+                } else {
+                    submitColor[0].style.color = "white";
+                    submitColor[0].disabled = false;
+                }
+            }
+            
+            const backErrorHandler = (type) => {
+                const frontErr = {
+                    id: document.getElementsByName('id'),
+                    pw: document.getElementsByName('passwd'),
+                    repw: document.getElementsByName('repasswd'),
+                    email: document.getElementsByName('email'),
+                }
+
+                let backErr = {
+                    id: document.getElementsByName('backiderr'),
+                    pw: document.getElementsByName('backpwerr'),
+                    email: document.getElementsByName('backemailerr'),
+                };
+
+                switch (type) {
+                    case 'pw':
+                        if (frontErr.pw[0].value != null) {
+                            backErr.pw[0].style.display = "none";
+                        }
+                        break;
+                    case 'id':
+                        if (frontErr.id[0].value != null) {
+                            backErr.id[0].style.display = "none";
+                        }
+                        break;
+                    case 'email':
+                        if (frontErr.email[0].value != null) {
+                            backErr.email[0].style.display = "none";
+                        }
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="join-root">
+            <div class="secu-title-xl">
+                SECURITYFIRST
+            </div>
+            <div class="join-card">
+                <form class="join-form" action="/signup" method="POST">
+                    <div class="join-title">
+                        JOIN
+                    </div>
+                    <div class="join-input">
+                        <input class="textbox-tile" name="id" type="text" placeholder="아이디" onkeyup="backErrorHandler('id');"/>
+                    </div>
+                    <% if (err[0] !=null) { %>
+                        <p class="label-err-dp" name="backiderr">
+                            <%=err[0]%>
+                        </p>
+                    <% } %>
+                    <div class="join-input">
+                        <input class="passwordbox-tile" name="passwd" type="password" placeholder="비밀번호 (영숫자, 특수문자 포함)" maxlength="64" onkeyup="confirmPassword();" onkeydown="backErrorHandler('pw');" />
+                    </div>
+                    <div class="join-input">
+                        <input class="passwordbox-tile" name="repasswd" type="password" placeholder="비밀번호 확인" maxlength="64" onkeyup="confirmPassword();" onkeydown="backErrorHandler('pw');" />
+                    </div>
+                    <% if (err[2] !=null) { %>
+                        <p class="label-err-dp" name="backpwerr">
+                            <%=err[2]%>
+                        </p>
+                    <% } %>
+                    <p class="label-err" name="pwvalerr">비밀번호가 일치하지 않습니다.<br></p>
+                    <p class="label-err" name="pwlenerr">비밀번호를 8자리 이상 입력해주세요.</p>
+                    <div class="join-input">
+                        <input class="textbox-tile" type="text" name="email" placeholder="이메일" onkeydown="backErrorHandler('email');" />
+                    </div>
+                    <% if (err[1] !=null) { %>
+                        <p class="label-err-dp" name="backemailerr">
+                            <%=err[1]%>
+                        </p>
+                    <% } %>
+                    <div class="join-input">
+                        <input class="textbox-tile" type="text" name="nickname" placeholder="닉네임 (학번_이름, ex. 21_이시큐)" />
+                    </div>
+                    <div class="join-type">
+                        <div>
+                            <input class="radio-def" type="radio" name="mem_type" value="NB" id="NB" />
+                            <label for="NB">NB</label>
+                        </div>
+                        <div>
+                            <input class="radio-def" type="radio" name="mem_type" value="YB" id="YB" />
+                            <label for="YB">YB</label>
+                        </div>
+                        <div>
+                            <input class="radio-def" type="radio" name="mem_type" value="OB" id="OB" />
+                            <label for="OB">OB</label>
+                        </div>
+                        <div>
+                            <input class="radio-def" type="radio" name="mem_type" value="ETC" id="ETC" />
+                            <label for="ETC">ETC</label>
+                        </div>
+                    </div>
+                    <div class="join-register">
+                        <button class="button-primary-tile" name="subbtn">가입</button>
+                    </div>
+                    <div class="play-back">
+                        <a class="button-text" href="/" disable>돌아가기</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

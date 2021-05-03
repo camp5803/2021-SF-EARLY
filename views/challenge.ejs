@@ -1,0 +1,196 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SecurityFirst CTF 2021</title>
+        <!---->
+        <link rel="stylesheet" href="<%=route%>css/theme.css">
+        <link rel="stylesheet" href="<%=route%>css/controls.css">
+        <link rel="stylesheet" href="<%=route%>css/common.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-item-title secu-title-s">
+                    <a class="navbar-link-logo" href="/">SECURITYFIRST</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/notice">NOTICE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/ranking">SCOREBOARD</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link navbar-link-active" href="/chall">CHALLENGE</a>
+                </div>
+                <div class="navbar-item navbar-item-profile">
+                    <a class="navbar-link" href="/profile">PROFILE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/logout">LOGOUT</a>
+                </div>
+                <% if (sess.users.mem_type == "Admin") { %>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/kingkingsecu">ADMIN</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="ingame-root">
+            <div class="ingame-content">
+                <div class="challenge-main-container">
+                    <div class="challenge-main-item">
+                        <div class="challenge-main-title">
+                            CHALLENGE
+                        </div>
+                    </div>
+                    <div class="challenge-main-item">
+                        <div class="challenge-map-container">
+                            <div class="challenge-map-item">
+                                <div class="challenge-map-name">
+                                    <img src="<%=route%>img/AmongUs-TheSkeldTitle.png" />
+                                </div>
+                            </div>
+                            <div class="challenge-map-item">
+                                <div class="challenge-map-img">
+                                    <img src="<%=route%>img/AmongUs-TheSkeldMap.png" />
+                                    <a class="challenge-map-all 
+                                    <% if (type == '') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall">
+                                        ALL
+                                    </a>
+                                    <a class="challenge-map-rev 
+                                    <% if (type == 'REV') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/REV">
+                                        REV
+                                    </a>
+                                    <a class="challenge-map-pwn 
+                                    <% if (type == 'PWN') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/PWN">
+                                        PWN
+                                    </a>
+                                    <a class="challenge-map-for 
+                                    <% if (type == 'FOR') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/FOR">
+                                        FOR
+                                    </a>
+                                    <a class="challenge-map-web 
+                                    <% if (type == 'WEB') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/WEB">
+                                        WEB
+                                    </a>
+                                    <a class="challenge-map-misc 
+                                    <% if (type == 'MISC') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/MISC">
+                                        MISC
+                                    </a>
+                                    <a class="challenge-map-crypt 
+                                    <% if (type == 'CRYPT') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/CRYPT">
+                                        CRYPT
+                                    </a>
+                                    <a class="challenge-map-question 
+                                    <% if (type == 'QUESTION') { %>
+                                        challenge-map-selected
+                                    <% } %>
+                                    " href="/chall/QUESTION">
+                                        ?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="challenge-prob-container">
+                    <div class="challenge-prob-item challenge-prob-item-caption">
+                        <div class="challenge-prob-item-type">
+                            <p>분야</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-point">
+                            <p>점수</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-name">
+                            <p>문제이름</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-solver">
+                            <p>풀이수</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-author">
+                            <p>출제자</p>
+                        </div>
+                    </div>
+                    <% for (let i=0; i < data.length; i++) { %>
+                        <a class="challenge-prob-item
+                        <% for (let j=0; j<solverData.length; j++) { %>
+                            <% if (data[i].puid == solverData[j].puid) { %>
+                                challenge-prob-item-solved
+                            <% } %>
+                        <% } %>
+                        " href="/chall/detail/<%=data[i].puid%>">
+                            <div class="challenge-prob-item-type">
+                                <p><%=data[i].prob_type%></p>
+                            </div>
+                            <hr class="challenge-prob-item-divider-v divider" />
+                            <div class="challenge-prob-item-point">
+                                <p><%=data[i].pscore%></p>
+                            </div>
+                            <hr class="challenge-prob-item-divider-v divider" />
+                            <div class="challenge-prob-item-name">
+                                <p><%=data[i].pname%></p>
+                            </div>
+                            <hr class="challenge-prob-item-divider-v divider" />
+                            <div class="challenge-prob-item-solver">
+                                <p><%=data[i].count%></p>
+                            </div>
+                            <hr class="challenge-prob-item-divider-v divider" />
+                            <div class="challenge-prob-item-author">
+                                <p><%=data[i].author%></p>
+                            </div>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!--<a class="challenge-prob-item challenge-prob-item-solved" href="challenge-detail.html">
+                        <div class="challenge-prob-item-type">
+                            <p>MISC</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-point">
+                            <p>1000</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-name">
+                            <p>MIC CHECK! MIC CHECK!</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-solver">
+                            <p>999</p>
+                        </div>
+                        <hr class="challenge-prob-item-divider-v divider" />
+                        <div class="challenge-prob-item-author">
+                            <p>ClasSun9</p>
+                        </div>
+                    </a>-->

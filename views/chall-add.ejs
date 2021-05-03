@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v4.1.1">
+  <title>SecurityFrist CTF 2021</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="../dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+  <script>
+    const fuckFileupload = () => {
+      let fileinput = document.getElementsByName("challfile");
+      let formdata = document.getElementsByName("test");
+      let hdbutton = document.getElementsByName("handler");
+      fileinput[0].style = "display: inline;"
+      formdata[0].action="/kingkingsecu/chall_fileupload";
+      formdata[0].enctype="multipart/form-data";
+      hdbutton[0].style = "display: none;"
+    }
+  </script>
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/notice">SecurityFirst</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+      data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="sidebar-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="/kingkingsecu">
+                <span data-feather="home"></span>
+                회원 관리 <span class="sr-only"></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kingkingsecu/chall">
+                <span data-feather="file"></span>
+                문제 관리
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kingkingsecu/notice">
+                <span data-feather="shopping-cart"></span>
+                공지 관리
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/kingkingsecu/chall_post">
+                <span data-feather="shopping-cart"></span>
+                문제 등록
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kingkingsecu/notice_post">
+                <span data-feather="shopping-cart"></span>
+                공지 등록
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/kingkingsecu/log">
+                <span data-feather="shopping-cart"></span>
+                로그 관리
+              </a>
+            </li>
+          </ul>
+
+          <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>-->
+      </nav>
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <br>
+        <h2>문제 등록</h2>
+        <br>
+        <div class="table-responsive">
+          <div class="col-lg-5 col-md-12">
+            <form action="/kingkingsecu/chall_post" method="POST" name="test">
+              <div class="form-group">
+                <input type="text" class="form-control" name="pname" placeholder="문제 이름" />
+              </div>
+              <div class="form-group">
+                <select class="form-control" name="prob_type">
+                  <option value="WEB">WEB</option>
+                  <option value="PWN">PWN</option>
+                  <option value="REV">REV</option>
+                  <option value="FOR">FOR</option>
+                  <option value="MISC">MISC</option>
+                  <option value="CRYPT">CRYPT</option>
+                  <option value="QUESTION">EVENT</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="pscore" placeholder="점수 (무조건 숫자만 적으세요)" />
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="prob_flag" placeholder="플래그" />
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="prob_info" rows="5" placeholder="문제 설명"></textarea>
+              </div>
+              <input type="button" onclick="fuckFileupload();" value="파일 업로드 (안할거면 절대 제발 클릭 X 뭐 안된다고 뭐라하기 없기)" name="handler">
+              <input type="file" name="challfile" style="display: none;">
+              <br><br>
+              <div class="text-center"><button type="submit">문제 등록</button></div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SecurityFirst CTF 2021</title>
+        <!---->
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/controls.css">
+        <link rel="stylesheet" href="css/common.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-item-title secu-title-s">
+                    <a class="navbar-link-logo" href="/">SECURITYFIRST</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link navbar-link-active" href="/notice">NOTICE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/ranking">SCOREBOARD</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/chall">CHALLENGE</a>
+                </div>
+                <div class="navbar-item navbar-item-profile">
+                    <a class="navbar-link" href="/profile">PROFILE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/logout">LOGOUT</a>
+                </div>
+                <% if (sess.users.mem_type == "Admin") { %>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/kingkingsecu">ADMIN</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="ingame-root">
+            <div class="ingame-content">
+                <div class="notice-main-container">
+                    <div class="notice-main-item">
+                        <div class="notice-main-title">
+                            NOTICE
+                        </div>
+                    </div>
+                    <div class="notice-main-item">
+                        <div class="notice-summary-container">
+                            <div class="notice-summary-rule">
+                                <div class="notice-summary-rule-title">
+                                    대회 소개
+                                </div>
+                                <div class="notice-summary-rule-text">
+                                    <p>본 대회는 SecurityFirst에서 매년 진행하는 해킹대회로 SecurityFirst 신입회원, YB, OB 뿐만 아니라 순천향대학교 정보보호학과 학부생과 경찰대학교 CRG 회원 분들이 참여하는 대회입니다.</p>
+                                    <br>
+                                    <p>대회 일정</p>
+                                    <p>2021년 03월 12일(금) 21:00 ~ 2021년 03월 14일(일) 09:00</p>
+                                </div>
+                                <div class="notice-summary-discord-button">
+                                    <a href="/notice/1" style="text-decoration: none;"><button class="button-primary-tile">대회 규칙</button></a>
+                                </div>
+                            </div>
+                            <div>
+                                <hr class="divider notice-item-divider-v" />
+                            </div>
+                            <div class="notice-summary-discord">
+                                <div class="notice-summary-discord-title">
+                                    디스코드
+                                </div>
+                                <div class="notice-summary-discord-text">
+                                    <p>대회 문의</p>
+                                    <p>- 디스코드를 통해 서로 소통하고 실시간으로 운영진에게 문의할 수 있습니다.</p>
+                                    <p>- 대회에 대한 문의사항은 대회 운영진에게 연락 바랍니다.</p>
+                                    <p>디스코드 : https://discord.gg/wQ68ueCjaw</p>
+                                </div>
+                                <div class="notice-summary-discord-button">
+                                    <a href="https://discord.gg/wQ68ueCjaw" style="text-decoration: none;"><button class="button-primary-tile">디스코드로 가기</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notice-list-container">
+                    <% for(let i = data.length - 1; i > 0; i--) { %>
+                        <a class="notice-list-item" href="/notice/<%=data[i].nuid%>">
+                            <div class="notice-list-item-title">
+                                <span><%=data[i].title%> </span>
+                                <span><%=data[i].created_at.toString().replace('GMT+0900 (대한민국 표준시)', '')%></span>
+                            </div> 
+                            <div class="notice-list-item-text">
+                                <p><%=data[i].content%></p>
+                            </div>
+                        </a><br>
+                    <% } %>
+                    <!--<a class="notice-list-item" href="notice-detail">
+                        <div class="notice-list-item-title">
+                            <span>두번째 공지입니다</span>
+                            <span>2021-01-01 00:00</span>
+                        </div>
+                        <div class="notice-list-item-text">
+                            <p>그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호. 그렇습니다. 두번째 공지입니다. 호호.</p>
+                        </div>
+                    </a>
+                    <a class="notice-list-item" href="notice-detail">
+                        <div class="notice-list-item-title">
+                            <span>세번째 공지입니다</span>
+                            <span>2021-01-01 00:00</span>
+                        </div>
+                        <div class="notice-list-item-text">
+                            <p>그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호. 그렇습니다. 세번째 공지입니다. 호호.</p>
+                        </div>
+                    </a>-->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

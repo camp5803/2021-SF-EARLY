@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>profile</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr><td>
+            <%=users.id%>
+        </td></tr>
+        <tr><td>
+            <%=users.nickname%>
+        </td></tr>
+        <tr><td>
+            <%=users.email%>
+        </td></tr>
+        <%if (score != null) { %>
+        <tr><td>
+            <%=score.uscore%>
+        </td></tr>
+        <% } %>
+    </table>
+</body>
+
+</html>

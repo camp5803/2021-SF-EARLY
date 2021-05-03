@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="theme-dark theme-font">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SecurityFirst CTF 2021</title>
+        <!---->
+        <link rel="stylesheet" href="<%=route%>css/theme.css">
+        <link rel="stylesheet" href="<%=route%>css/controls.css">
+        <link rel="stylesheet" href="<%=route%>css/common.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-item-title secu-title-s">
+                    <a class="navbar-link-logo" href="/">SECURITYFIRST</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/notice">NOTICE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/ranking">SCOREBOARD</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link navbar-link-active" href="/chall">CHALLENGE</a>
+                </div>
+                <div class="navbar-item navbar-item-profile">
+                    <a class="navbar-link" href="/profile">PROFILE</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/logout">LOGOUT</a>
+                </div>
+                <% if (sess.users.mem_type == "Admin") { %>
+                <div class="navbar-item">
+                    <a class="navbar-link" href="/kingkingsecu">ADMIN</a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="ingame-root">
+            <div class="ingame-content">
+                <div class="challenge-detail-main-container">
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-title">
+                            <%=challData.pname%>
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-meta">
+                            <span><%=challData.prob_type%></span>
+                            <span><%=challData.pscore%></span>
+                            <hr class="challenge-detail-main-item-divider-v divider" />
+                            <span>SOLVE</span>
+                            <span><%=challData.count%></span>
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-item-divider-h">
+                            <hr class="divider" />
+                        </div>
+                    </div>
+                    <div class="challenge-detail-main-item">
+                        <div class="challenge-detail-main-text">
+                            <p><%-challData.prob_info%></p>
+                        </div>
+                    </div>
+                    <% if (fileData[0] != null) { %>
+                        <div class="challenge-detail-main-item">
+                            <div class="challenge-detail-main-text">
+                                <form action="/chall/detail/<%=challData.puid%>/download" method="POST">
+                                    <div class="challenge-detail-submit-item-button">
+                                        <button type="submit" class="button-primary-tile">문제 파일 다운로드</button>
+                                    </div>
+                                </form> 
+                            </div>
+                        </div>
+                    <% } %>
+                    <div class="challenge-detail-main-item">
+                        <form class="challenge-detail-submit-form" action="/chall/submit" method="POST">
+                            <div class="challenge-detail-submit-item">
+                                <div class="challenge-detail-submit-item-flag">
+                                    <input class="textbox-tile" name="prob_flag" type="text" placeholder="플래그" />
+                                </div>
+                            </div>
+                            <div class="challenge-detail-submit-item">
+                                <div class="challenge-detail-submit-item-expl">
+                                    <input class="textbox-tile" name="waytosolve" type="text" placeholder="풀이방법" />
+                                </div>
+                            </div>
+                            <div class="challenge-detail-submit-item">
+                                <div class="challenge-detail-submit-item-button">
+                                    <button class="button-primary-tile">인증하기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 에러 담야아 함 -->
+                </div>
+                <div class="challenge-prob-container">
+                    <div class="challenge-prob-item challenge-prob-item-caption">
+                        <div class="challenge-detail-solver-item-type">
+                            <p>분류</p>
+                        </div>
+                        <hr class="challenge-detail-solver-item-divider-v divider" />
+                        <div class="challenge-detail-solver-item-name">
+                            <p>이름</p>
+                        </div>
+                        <hr class="challenge-detail-solver-item-divider-v divider" />
+                        <div class="challenge-detail-solver-item-date">
+                            <p>풀이시간</p>
+                        </div>
+                    </div>
+                    <% for (let i=0; i<data.length; i++) { %>
+                        <div class="challenge-detail-solver-item">
+                            <div class="challenge-detail-solver-item-type">
+                                <p><%=data[i].mem_type%></p>
+                            </div>
+                            <hr class="challenge-detail-solver-item-divider-v divider" />
+                            <div class="challenge-detail-solver-item-name">
+                                <p><%=data[i].nickname%></p>
+                            </div>
+                            <hr class="challenge-detail-solver-item-divider-v divider" />
+                            <div class="challenge-detail-solver-item-date">
+                                <p><%=data[i].solved_at.toString().replace('GMT+0900 (대한민국 표준시)', '')%></p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
