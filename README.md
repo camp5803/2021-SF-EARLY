@@ -45,9 +45,12 @@ Common
 - 프로필 조회; 자신이 푼 모든 문제를 보여줌
 
 ![profile](/readme_images/Common/6.png)
+
 - 공지사항 페이지의 게시글 조회
 
-![notice](/readme_images/Common/1.png)
+![notice](/readme_images/Common/1_1.png)
+![notice_spec](/readme_images/Common/1_2.png)
+
 - 순위 조회; 회원 등급별로 따로 조회 가능
 
 ![scoreboard](/readme_images/Common/2.png)
@@ -66,11 +69,26 @@ Common
 
 Admin only
 
-- 회원 정보 수정 및 삭제
-- 회원 밴 기능
-- 공지사항 추가, 수정, 삭제
+- 회원 정보 수정 및 삭제 그리고 밴 기능
+
+![user](/readme_images/Admin/1.png)
+
 - 문제 추가, 수정, 삭제, 스위치(온오프) + 파일 업로드
+
+![chall_man_1](/readme_images/Admin/2.png)
+![chall_man_2](/readme_images/Admin/3.png)
+
+![chall_add_without_file](/readme_images/Admin/5.png)
+![chall_add_with_file](/readme_images/Admin/6.png)
+
+- 공지사항 추가, 수정, 삭제
+
+![notice_admin](/readme_images/Admin/4.png)
+![notice_add](/readme_images/Admin/7.png)
+
 - 서버 로그 조회
+
+![log](/readme_images/Admin/8.png)
 
 ### Role
 
