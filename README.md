@@ -1,24 +1,23 @@
 # SecurityFirst CTF (2021 early)
-- - -
 
 node.js를 사용하여 개발한 CTF 플랫폼
 
 ## Self-Introduction
-- - -
+
 - 순천향대학교 정보보호학과 20학번 재학생
 - 정보보호학과 학술동아리 SecurityFirst 운영진(Web Team Leader)
 - 정보보안 포럼 Anti-root 회원
 
 ## Description
-- - -
+
 ### Why?
-- - -
+
 - SecurityFirst의 운영진은 한 해에 3개의 CTF를 운영해야 함.
 - 겨울방학엔 신입생을 위한 신입생 해킹대회(CTF)를 준비해야 함. (비영리 목적의 대회)
 - 전통적으로(?) CTF 플랫폼은 웹 팀에서 만들어야 하고, 필자가 웹 팀의 운영진임.
 
 ### Environment
-- - -
+
 - 개발 환경: Macbook Air(M1) + Visual Studio Code
 - 서버 환경(Web): Windows 10 + Intel i7-6700, 32GB Memory
 - 서버 환경(DB): Ubuntu 20.04 + Intel i7-4790K 12GB Memory
@@ -28,14 +27,14 @@ node.js를 사용하여 개발한 CTF 플랫폼
 + DB 서버를 개인 서버에서 돌린 이유는 웹 서버 컴퓨터에 돌아가고 있는 서버가 굉장히 많아 리소스 부담을 덜기 위함임.
 
 ### Specification
-- - -
+
 - 언어: Javascript(ES6+), HTML, CSS 등
 - 프레임워크: node.js only
 - 라이브러리(미들웨어): crypto, ejs, express, express-session, fs, mariadb, multer, winston 등
 - 데이터베이스: MariaDB
 
 ### Function
-- - -
+
 #### Common
 
 - 로그인, 로그아웃, 회원가입
@@ -99,12 +98,12 @@ node.js를 사용하여 개발한 CTF 플랫폼
 - (회원가입, 로그인) 클라이언트, 서버에서 두 번 검증하여 신뢰할 수 있는 데이터만 사용
 
 ### Role
-- - -
+
 - (어드민 페이지) 전부
 - (어드민페이지 제외) 퍼블리싱, 디자인 작업을 제외한 모든 부분
 
 ### Acquired Tech Stack
-- - -
+
 - node.js 기본
 - ECMAScript2016+의 문법과 원리
 - HTTP 기본 (Header 등)
