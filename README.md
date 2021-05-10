@@ -29,9 +29,9 @@ node.js를 사용하여 개발한 CTF 플랫폼
 ### Specification
 
 - 언어: Javascript(ES6+), HTML, CSS 등
-- 프레임워크: node.js only
+- 프레임워크: node.js + bootstrap (admin page)
 - 라이브러리(미들웨어): crypto, ejs, express, express-session, fs, mariadb, multer, winston 등
-- 데이터베이스: MariaDB
+- 데이터베이스: MariaDB (Raw Query)
 
 ### Function
 
