@@ -26,12 +26,3 @@ CREATE TABLE score(
 COMMENT = '너무집에가고싶다',
 DEFAULT CHARSET = utf8,
 ENGINE = InnoDB;
-
-CREATE TABLE Week2(
-    uid int NOT NULL auto_increment primary key,
-    id VARCHAR(20) NOT NULL,
-    password VARCHAR(88) NOT NULL
-    )
-COMMENT = 'WEB 2주차',
-DEFAULT CHARSET = utf8,
-ENGINE = InnoDB;
